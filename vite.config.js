@@ -1,18 +1,42 @@
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import { createLogger, defineConfig } from 'vite';
-import inlineEditPlugin from './plugins/visual-editor/vite-plugin-react-inline-editor.js';
-import editModeDevPlugin from './plugins/visual-editor/vite-plugin-edit-mode.js';
-import selectionModePlugin from './plugins/selection-mode/vite-plugin-selection-mode.js';
-import iframeRouteRestorationPlugin from './plugins/vite-plugin-iframe-route-restoration.js';
-import pocketbaseAuthPlugin from './plugins/vite-plugin-pocketbase-auth.js';
 
 import { readFileSync } from 'node:fs';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const pkg = JSON.parse(readFileSync('./package.json', 'utf-8'));
 const allDeps = Object.keys(pkg.dependencies || {});
 
 const isDev = process.env.NODE_ENV !== 'production';
+
+const loadDevPlugins = async (enabled) => {
+	if (!enabled) return [];
+
+	const [
+		{ default: inlineEditPlugin },
+		{ default: editModeDevPlugin },
+		{ default: selectionModePlugin },
+		{ default: iframeRouteRestorationPlugin },
+		{ default: pocketbaseAuthPlugin },
+	] = await Promise.all([
+		import('./plugins/visual-editor/vite-plugin-react-inline-editor.js'),
+		import('./plugins/visual-editor/vite-plugin-edit-mode.js'),
+		import('./plugins/selection-mode/vite-plugin-selection-mode.js'),
+		import('./plugins/vite-plugin-iframe-route-restoration.js'),
+		import('./plugins/vite-plugin-pocketbase-auth.js'),
+	]);
+
+	return [
+		inlineEditPlugin(),
+		editModeDevPlugin(),
+		selectionModePlugin(),
+		iframeRouteRestorationPlugin(),
+		pocketbaseAuthPlugin(),
+	];
+};
 
 const configHorizonsViteErrorHandler = `
 const observer = new MutationObserver((mutations) => {
@@ -284,13 +308,13 @@ logger.error = (msg, options) => {
 	loggerError(msg, options);
 }
 
-export default defineConfig({
+export default defineConfig(async ({ command }) => ({
 	optimizeDeps: {
 		include: allDeps,
 	},
 	customLogger: logger,
 	plugins: [
-		...(isDev ? [inlineEditPlugin(), editModeDevPlugin(), selectionModePlugin(), iframeRouteRestorationPlugin(), pocketbaseAuthPlugin()] : []),
+		...(await loadDevPlugins(command === 'serve')),
 		react(),
 		addTransformIndexHtml
 	],
@@ -308,7 +332,7 @@ export default defineConfig({
 			strict: true,
 			allow: [
 				path.resolve(__dirname),
-				path.join(path.resolve(__dirname, '../..'), 'node_modules'),
+				path.join(path.resolve(__dirname), 'node_modules'),
 			],
 		},
 	},
@@ -328,4 +352,4 @@ export default defineConfig({
 			]
 		}
 	}
-});
+}));

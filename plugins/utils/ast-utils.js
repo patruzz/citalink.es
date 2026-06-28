@@ -11,7 +11,7 @@ import {
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const VITE_PROJECT_ROOT = path.resolve(__dirname, '../../../..');
+const VITE_PROJECT_ROOT = path.resolve(__dirname, '..', '..');
 
 // Blacklist of components that should not be extracted (utility/non-visual components)
 const COMPONENT_BLACKLIST = new Set([

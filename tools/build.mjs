@@ -17,6 +17,6 @@ const run = (command, args, options = {}) => {
 
 run(process.execPath, ['tools/generate-llms.js']);
 
-const viteCli = fileURLToPath(new URL('../../../node_modules/vite/bin/vite.js', import.meta.url));
-const status = run(process.execPath, [viteCli, 'build', '--outDir', '../../dist/apps/web']);
+const viteCli = fileURLToPath(new URL('../node_modules/vite/bin/vite.js', import.meta.url));
+const status = run(process.execPath, [viteCli, 'build']);
 process.exit(status);

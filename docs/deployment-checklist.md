@@ -1,8 +1,16 @@
 # CitaLink deployment checklist
 
-## Variables obligatorias
+## Rama Hostinger
 
-Configurar en el entorno de PocketBase/Hostinger:
+La rama `main` es una app React/Vite en raiz para despliegue en Hostinger.
+
+- Install command: `npm install`
+- Build command: `npm run build`
+- Output directory: `dist`
+
+La version fullstack con PocketBase, hooks y migraciones queda preservada en la rama `codex/fullstack-pocketbase`.
+
+## Variables fullstack
 
 ```env
 CONTACT_EMAIL=pat@citalink.es
@@ -20,7 +28,7 @@ EMAIL_WEBHOOK_SECRET=<secreto-largo>
 
 ## Migraciones
 
-Ejecutar en produccion con la `PB_ENCRYPTION_KEY` real:
+Solo aplican a la rama `codex/fullstack-pocketbase`. Ejecutar en produccion con la `PB_ENCRYPTION_KEY` real:
 
 ```sh
 npm run migrations:up --prefix apps/pocketbase

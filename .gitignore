@@ -8,8 +8,7 @@ dist/
 .cache/
 .vite/
 
-apps/pocketbase/pb_data/
-apps/pocketbase/pocketbase
+apps/
 *.disabled.js
 *.log
 npm-debug.log*
