@@ -5,10 +5,13 @@
 node_modules/
 .pnpm-store/
 dist/
+dist.zip
 .cache/
 .vite/
 
 apps/
+backend/
+hostinger-mcp/
 *.disabled.js
 *.log
 npm-debug.log*

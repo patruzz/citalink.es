@@ -35,6 +35,11 @@ const DashboardPage = () => {
 
   useEffect(() => {
     loadData();
+
+    const paymentStatus = new URLSearchParams(window.location.search).get('payment');
+    if (paymentStatus === 'success') {
+      toast.success('Pago recibido. Hemos creado la acción de onboarding.');
+    }
   }, []);
 
   const loadData = async () => {

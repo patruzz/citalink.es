@@ -4,7 +4,17 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
 
-const PricingCard = ({ name, price, description, features, highlighted, onCTA }) => {
+const PricingCard = ({
+  name,
+  price,
+  description,
+  features,
+  highlighted,
+  loading,
+  onCTA,
+  secondaryLabel,
+  onSecondaryCTA,
+}) => {
   return (
     <Card
       className={`relative hover:shadow-lg transition-all duration-200 ${
@@ -39,9 +49,21 @@ const PricingCard = ({ name, price, description, features, highlighted, onCTA })
           className="w-full"
           variant={highlighted ? 'default' : 'outline'}
           onClick={onCTA}
+          disabled={loading}
         >
-          Solicitar demo
+          {loading ? 'Procesando...' : 'Comprar ahora'}
         </Button>
+        {secondaryLabel && onSecondaryCTA && (
+          <Button
+            type="button"
+            className="w-full mt-2"
+            variant="ghost"
+            onClick={onSecondaryCTA}
+            disabled={loading}
+          >
+            {secondaryLabel}
+          </Button>
+        )}
       </CardContent>
     </Card>
   );

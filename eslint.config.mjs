@@ -4,7 +4,7 @@ import importPlugin from 'eslint-plugin-import';
 import globals from 'globals';
 
 export default [
-	{ ignores: ['node_modules/**', 'dist/**', 'build/**', 'apps/**', 'vite.config.js'] },
+	{ ignores: ['node_modules/**', 'dist/**', 'build/**', 'apps/**', 'backend/**', 'hostinger-mcp/**', 'vite.config.js'] },
 	{
 		files: ['**/*.js', '**/*.jsx'],
 		plugins: { react, 'react-hooks': reactHooks, import: importPlugin },

@@ -1,17 +1,21 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { toast } from 'sonner';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import PricingCard from '@/components/PricingCard.jsx';
+import { createStripeCheckoutSession } from '@/lib/citalinkApi.js';
 
 const PricingPage = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(null);
 
   const plans = [
     {
+      id: 'starter',
       name: 'Starter',
       price: '99€',
       description: 'Para equipos que empiezan con automatización',
@@ -26,6 +30,7 @@ const PricingPage = () => {
       highlighted: false,
     },
     {
+      id: 'growth',
       name: 'Growth',
       price: '249€',
       description: 'Para equipos comerciales en crecimiento',
@@ -41,6 +46,7 @@ const PricingPage = () => {
       highlighted: true,
     },
     {
+      id: 'pro',
       name: 'Pro',
       price: '499€',
       description: 'Para organizaciones con alto volumen',
@@ -57,6 +63,19 @@ const PricingPage = () => {
       highlighted: false,
     },
   ];
+
+  const handleCheckout = async (plan) => {
+    try {
+      setLoading(plan.id);
+      const { url } = await createStripeCheckoutSession(plan.id);
+      window.location.assign(url);
+    } catch (error) {
+      console.error(error);
+      toast.error(error.message || 'Ocurrió un error al iniciar el pago.');
+    } finally {
+      setLoading(null);
+    }
+  };
 
   return (
     <>
@@ -83,14 +102,14 @@ const PricingPage = () => {
                 Precios transparentes
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Elige el plan que mejor se adapte a tu volumen de leads y tamaño de equipo
+                Compra directa con Stripe. Si prefieres hablar primero, puedes pedir una demo antes de pagar.
               </p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               {plans.map((plan, index) => (
                 <motion.div
-                  key={index}
+                  key={plan.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -102,7 +121,10 @@ const PricingPage = () => {
                     description={plan.description}
                     features={plan.features}
                     highlighted={plan.highlighted}
-                    onCTA={() => navigate('/demo')}
+                    loading={loading === plan.id}
+                    onCTA={() => handleCheckout(plan)}
+                    secondaryLabel="Hablar antes de comprar"
+                    onSecondaryCTA={() => navigate('/demo')}
                   />
                 </motion.div>
               ))}
