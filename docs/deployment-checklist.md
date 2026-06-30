@@ -33,16 +33,21 @@ STRIPE_PRICE_PRO_MONTHLY=<price-pro-mensual>
 STRIPE_PRICE_SETUP=<price-setup-unico>
 ```
 
-## Migraciones
+## Backend local
 
-Solo aplican a la rama `codex/fullstack-pocketbase`. Ejecutar en produccion con la `PB_ENCRYPTION_KEY` real:
+Arrancar y validar PocketBase local con la `PB_ENCRYPTION_KEY` real:
 
 ```sh
-npm run migrations:up --prefix apps/pocketbase
+npm run backend:dev
+npm run backend:smoke
 ```
+
+Por defecto el script local usa `backend/pb_data_dev` y `backend/pb_migrations_dev` para no tocar `backend/pb_data`.
+El healthcheck operativo es `GET /api/citalink/health`.
 
 ## Validacion de demo
 
+- Confirmar `GET /api/citalink/health`.
 - Enviar formulario `/demo`.
 - Confirmar que se crea `demoRequests`.
 - Confirmar email interno en `pat@citalink.es`.

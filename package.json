@@ -9,7 +9,11 @@
 		"start": "vite preview --host 0.0.0.0 --port 3000",
 		"preview": "vite preview --host 0.0.0.0 --port 3000",
 		"lint": "eslint . --quiet",
-		"lint:warn": "eslint ."
+		"lint:warn": "eslint .",
+		"backend:dev": "powershell -ExecutionPolicy Bypass -File tools/start-pocketbase-dev.ps1",
+		"backend:smoke": "node tools/citalink-backend-smoke.mjs",
+		"voice:dev": "node tools/voice-agent-server.mjs",
+		"voice:smoke": "node tools/voice-agent-smoke.mjs"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^5.2.2",
