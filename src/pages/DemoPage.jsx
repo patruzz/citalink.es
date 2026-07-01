@@ -3,27 +3,33 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { CheckCircle } from 'lucide-react';
+import { CalendarCheck, CheckCircle, Shield } from 'lucide-react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import DemoFormSection from '@/components/DemoFormSection.jsx';
 
 const DemoPage = () => {
   const demoIncludes = [
-    'Mapa de canales donde entran tus consultas',
-    'Estimación de citas perdidas por respuesta tardía',
-    'Revisión de agenda, recordatorios y reprogramaciones',
-    'Primer flujo automatizable con menor riesgo',
-    'Plan de activación en fases para tu equipo',
+    'Mapa rápido de llamadas, WhatsApp, formularios y agenda',
+    '5 fugas probables entre solicitud y cita confirmada',
+    'Hipótesis de citas recuperables con métricas agregadas',
+    'Primer flujo piloto con revisión humana',
+    'Siguiente paso claro si hay oportunidad real',
+  ];
+
+  const trustItems = [
+    'No pedimos datos de pacientes en esta primera auditoría.',
+    'No necesitamos acceso a CRM, agenda ni WhatsApp Business para diagnosticar.',
+    'La primera conversación se centra en proceso, tiempos y volumen aproximado.',
   ];
 
   return (
     <>
       <Helmet>
-        <title>Auditoría de citas - CitaLink</title>
+        <title>Auditoría de fuga de citas - CitaLink</title>
         <meta
           name="description"
-          content="Solicita una auditoría de citas con CitaLink. Revisamos canales, tiempos de respuesta, agenda y seguimiento para detectar oportunidades perdidas."
+          content="Solicita una auditoría de 15 minutos con CitaLink. Revisamos llamadas, WhatsApp, formularios y seguimiento para detectar citas perdidas sin pedir datos de pacientes."
         />
       </Helmet>
 
@@ -39,12 +45,12 @@ const DemoPage = () => {
               className="max-w-3xl mx-auto text-center mb-12"
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-6" style={{ letterSpacing: '-0.02em' }}>
-                Solicita una auditoría de citas
+                Solicita una auditoría de fuga de citas
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Completa el formulario y revisaremos contigo dónde se pierden consultas, qué parte del
-                seguimiento conviene automatizar primero y cómo CitaLink puede convertir más intención
-                en citas confirmadas.
+                En 15 minutos revisamos dónde se pierden primeras visitas entre llamadas, WhatsApp,
+                formularios y seguimiento manual. Si no vemos oportunidad clara, te llevas igualmente
+                el diagnóstico.
               </p>
             </motion.div>
 
@@ -67,6 +73,10 @@ const DemoPage = () => {
                 >
                   <Card className="sticky top-24">
                     <CardContent className="pt-6">
+                      <div className="inline-flex items-center gap-2 rounded-full border bg-background px-3 py-1 text-xs font-medium text-primary mb-5">
+                        <CalendarCheck className="w-4 h-4" />
+                        15 minutos
+                      </div>
                       <h3 className="font-semibold text-lg mb-4">Qué incluye la auditoría</h3>
                       <ul className="space-y-3">
                         {demoIncludes.map((item, index) => (
@@ -79,11 +89,26 @@ const DemoPage = () => {
 
                       <div className="mt-6 pt-6 border-t">
                         <p className="text-xs text-muted-foreground">
-                          Tiempo estimado: 30-45 minutos
+                          Tiempo estimado: 15 minutos
                         </p>
                         <p className="text-xs text-muted-foreground mt-2">
                           Te contactaremos en menos de 24 horas laborables
                         </p>
+                      </div>
+
+                      <div className="mt-6 pt-6 border-t">
+                        <div className="flex items-center gap-2 mb-3">
+                          <Shield className="w-4 h-4 text-primary" />
+                          <h4 className="text-sm font-semibold">Guardrails</h4>
+                        </div>
+                        <ul className="space-y-2">
+                          {trustItems.map((item) => (
+                            <li key={item} className="flex items-start gap-2">
+                              <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                              <span className="text-xs text-muted-foreground leading-relaxed">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </CardContent>
                   </Card>

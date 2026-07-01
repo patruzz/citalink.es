@@ -54,7 +54,7 @@ const DemoFormSection = () => {
       }, { $autoCancel: false });
 
       setSubmitStatus('success');
-      toast.success('Auditoría solicitada. Te contactaremos para revisar tu flujo comercial.');
+      toast.success('Auditoría solicitada. Te contactaremos para revisar tu flujo de citas.');
       
       setFormData({
         name: '',
@@ -79,16 +79,16 @@ const DemoFormSection = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Solicitar auditoría de citas</CardTitle>
+        <CardTitle>Solicitar auditoría de 15 minutos</CardTitle>
         <CardDescription>
-          Completa el formulario y te contactaremos para revisar dónde se escapan oportunidades
+          Cuéntanos lo mínimo para preparar una primera hipótesis de fuga. No incluyas datos de pacientes.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           {submitStatus === 'success' && (
             <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
-              Solicitud registrada. El backend notificará a pat@citalink.es y enviará confirmación si el correo está configurado.
+              Solicitud registrada. Te contactaremos para revisar el flujo de solicitud a cita confirmada.
             </div>
           )}
           {submitStatus === 'error' && (
@@ -153,8 +153,9 @@ const DemoFormSection = () => {
                   <SelectValue placeholder="Selecciona un sector" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="clinicas">Clínicas privadas</SelectItem>
-                  <SelectItem value="dental">Dental y estética</SelectItem>
+                  <SelectItem value="dental">Clínica dental</SelectItem>
+                  <SelectItem value="estetica">Clínica estética</SelectItem>
+                  <SelectItem value="clinicas">Otra clínica privada</SelectItem>
                   <SelectItem value="inmobiliarias">Inmobiliarias</SelectItem>
                   <SelectItem value="despachos">Despachos profesionales</SelectItem>
                   <SelectItem value="tecnicos">Servicios técnicos</SelectItem>
@@ -164,7 +165,7 @@ const DemoFormSection = () => {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="monthlyLeads">Leads mensuales aproximados</Label>
+              <Label htmlFor="monthlyLeads">Solicitudes de cita mensuales</Label>
               <Input
                 id="monthlyLeads"
                 type="number"
@@ -176,7 +177,7 @@ const DemoFormSection = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="mainChannel">Canal principal actual</Label>
+            <Label htmlFor="mainChannel">Canal donde más se atascan las citas</Label>
             <Select value={formData.mainChannel} onValueChange={(value) => handleChange('mainChannel', value)}>
               <SelectTrigger id="mainChannel" className="text-gray-900">
                 <SelectValue placeholder="Selecciona un canal" />
@@ -186,19 +187,20 @@ const DemoFormSection = () => {
                 <SelectItem value="phone">Teléfono</SelectItem>
                 <SelectItem value="whatsapp">WhatsApp</SelectItem>
                 <SelectItem value="web">Formulario web</SelectItem>
-                <SelectItem value="mixed">Mixto</SelectItem>
+                <SelectItem value="missed_calls">Llamadas perdidas</SelectItem>
+                <SelectItem value="mixed">Varios canales</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="message">Mensaje adicional</Label>
+            <Label htmlFor="message">¿Dónde sospechas que se pierden citas?</Label>
             <Textarea
               id="message"
               rows={4}
               value={formData.message}
               onChange={(e) => handleChange('message', e.target.value)}
-              placeholder="Cuéntanos sobre tu proceso comercial actual..."
+              placeholder="Ejemplo: llamadas fuera de horario, formularios que tardan en responderse, WhatsApps sin seguimiento, no-shows..."
               className="text-gray-900 placeholder:text-gray-400"
             />
           </div>
@@ -210,12 +212,12 @@ const DemoFormSection = () => {
               onCheckedChange={(checked) => handleChange('consent', checked)}
             />
             <Label htmlFor="consent" className="text-sm leading-relaxed cursor-pointer">
-              Acepto la política de privacidad y el tratamiento de mis datos para fines comerciales *
+              Acepto la política de privacidad y el tratamiento de mis datos profesionales para preparar la auditoría *
             </Label>
           </div>
 
           <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? 'Enviando...' : 'Solicitar auditoría'}
+            {loading ? 'Enviando...' : 'Solicitar auditoría de 15 minutos'}
           </Button>
         </form>
       </CardContent>

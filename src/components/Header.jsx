@@ -59,7 +59,7 @@ const Header = () => {
                   </Button>
                 </Link>
                 <Link to="/demo">
-                  <Button size="sm">Pedir demo</Button>
+                  <Button size="sm">Pedir auditoría</Button>
                 </Link>
               </>
             ) : (
@@ -105,7 +105,7 @@ const Header = () => {
                         </Button>
                       </Link>
                       <Link to="/demo" onClick={() => setIsOpen(false)}>
-                        <Button className="w-full">Pedir demo</Button>
+                        <Button className="w-full">Pedir auditoría</Button>
                       </Link>
                     </>
                   ) : (

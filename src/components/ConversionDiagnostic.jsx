@@ -53,29 +53,28 @@ const ConversionDiagnostic = () => {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border bg-background px-3 py-1 text-sm font-medium text-primary mb-5">
               <TrendingUp className="w-4 h-4" />
-              Diagnóstico rápido
+              Diagnóstico de 2 minutos
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Calcula cuántas citas se quedan sin dueño cada mes
+              Estima cuántas primeras visitas se quedan sin dueño cada mes
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              La mayoría de negocios no pierde leads por falta de interés, sino por respuesta lenta,
-              agenda dispersa y seguimientos que nadie retoma. CitaLink convierte esa fuga en una
-              cola de acciones medible.
+              Pensado para clínicas dentales, estética y negocios con cita previa: introduce números
+              aproximados y sal con una hipótesis clara para la auditoría de 15 minutos.
             </p>
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="rounded-lg border bg-background p-4">
                 <PhoneMissed className="w-5 h-5 text-primary mb-3" />
                 <p className="font-medium">Detecta fugas</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Llamadas, formularios y WhatsApp sin respuesta.
+                  Llamadas, formularios y WhatsApp sin respuesta o sin siguiente paso.
                 </p>
               </div>
               <div className="rounded-lg border bg-background p-4">
                 <CalendarCheck className="w-5 h-5 text-primary mb-3" />
                 <p className="font-medium">Agenda sin fricción</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Cualificación, huecos reales y recordatorios.
+                  Cualificación, huecos reales, confirmación y recordatorios.
                 </p>
               </div>
             </div>
@@ -99,7 +98,7 @@ const ConversionDiagnostic = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="missedRate">% sin respuesta rápida</Label>
+                  <Label htmlFor="missedRate">% sin respuesta o seguimiento</Label>
                   <Input
                     id="missedRate"
                     type="number"
@@ -122,7 +121,7 @@ const ConversionDiagnostic = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="recoveryRate">% recuperable con IA</Label>
+                  <Label htmlFor="recoveryRate">% recuperable con seguimiento</Label>
                   <Input
                     id="recoveryRate"
                     type="number"
@@ -162,7 +161,7 @@ const ConversionDiagnostic = () => {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/demo" className="flex-1">
                   <Button className="w-full">
-                    Pedir auditoría de citas
+                    Pedir auditoría de 15 minutos
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </Link>
@@ -174,7 +173,7 @@ const ConversionDiagnostic = () => {
               </div>
 
               <p className="text-xs text-muted-foreground">
-                Estimación orientativa para priorizar la conversación comercial. No representa una garantía de resultados.
+                Estimación orientativa con datos agregados. En la auditoría no pedimos datos de pacientes ni acceso a CRM.
               </p>
             </CardContent>
           </Card>

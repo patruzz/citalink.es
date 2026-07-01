@@ -7,12 +7,16 @@ import { Card, CardContent } from '@/components/ui/card';
 import {
   ArrowRight,
   BarChart3,
+  CalendarCheck,
   CheckCircle,
   ChevronDown,
+  ClipboardCheck,
   Clock,
   Mail,
+  MessageSquare,
   Phone,
   Shield,
+  Stethoscope,
 } from 'lucide-react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
@@ -98,6 +102,50 @@ const HomePage = () => {
     { value: '100%', label: 'Trazabilidad de acciones' },
   ];
 
+  const clinicLeaks = [
+    {
+      icon: Phone,
+      title: 'Llamadas no atendidas',
+      description: 'Primera valoración perdida porque recepción estaba ocupada o fuera de horario.',
+    },
+    {
+      icon: MessageSquare,
+      title: 'WhatsApps sin siguiente paso',
+      description: 'Preguntas de precio, disponibilidad o tratamiento que no llegan a cita confirmada.',
+    },
+    {
+      icon: Mail,
+      title: 'Formularios respondidos tarde',
+      description: 'Solicitudes web con intención real que comparan varias clínicas al mismo tiempo.',
+    },
+    {
+      icon: CalendarCheck,
+      title: 'Primeras visitas sin confirmar',
+      description: 'Personas interesadas que reciben información, pero no una propuesta clara de hueco.',
+    },
+  ];
+
+  const auditSteps = [
+    {
+      title: 'Mapeamos entradas',
+      description: 'Teléfono, WhatsApp, formularios, email y cualquier punto donde empieza una cita.',
+    },
+    {
+      title: 'Detectamos fugas',
+      description: 'Tiempo de respuesta, solicitudes sin dueño, reprogramaciones y no-shows.',
+    },
+    {
+      title: 'Proponemos un piloto',
+      description: 'Un canal, una agenda, revisión humana y una métrica clara para 30 días.',
+    },
+  ];
+
+  const trustSignals = [
+    'No pedimos datos de pacientes en la auditoría inicial.',
+    'Empezamos con revisión humana antes de automatizar respuestas.',
+    'El piloto se mide por citas confirmadas, seguimiento y tiempos de respuesta.',
+  ];
+
   return (
     <>
       <Helmet>
@@ -123,19 +171,19 @@ const HomePage = () => {
               >
                 <div className="inline-flex items-center gap-2 rounded-full border bg-background px-3 py-1 text-sm font-medium text-primary mb-5">
                   <CheckCircle className="w-4 h-4" />
-                  Para negocios que venden con agenda
+                  Auditoría de fuga de citas en 15 minutos
                 </div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                   Recupera las citas que hoy se pierden entre llamadas, WhatsApp y formularios
                 </h1>
                 <p className="text-base md:text-lg text-muted-foreground mb-8 max-w-prose leading-relaxed">
-                  CitaLink es el agente de respuesta y seguimiento que convierte consultas en citas confirmadas.
-                  Atiende rápido, cualifica, propone huecos reales y deja todo registrado para tu equipo.
+                  En una auditoría breve detectamos si tu clínica pierde primeras visitas por respuesta tardía,
+                  falta de seguimiento o agenda dispersa. Después proponemos un piloto de 30 días con revisión humana.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link to="/demo">
                     <Button size="lg" className="w-full sm:w-auto">
-                      Pedir auditoría de citas
+                      Pedir auditoría de 15 minutos
                       <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
                   </Link>
@@ -184,7 +232,8 @@ const HomePage = () => {
                 El problema no es captar más. Es no perder lo que ya llega.
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                CitaLink se diferencia atacando la fuga entre intención y cita confirmada.
+                CitaLink se diferencia atacando la fuga entre intención y cita confirmada, especialmente
+                en clínicas con primeras valoraciones, WhatsApp, formularios y recepción saturada.
               </p>
             </motion.div>
 
@@ -211,6 +260,50 @@ const HomePage = () => {
         </section>
 
         <section className="py-20 bg-muted/40">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="max-w-3xl mx-auto text-center mb-12"
+            >
+              <div className="inline-flex items-center gap-2 rounded-full border bg-background px-3 py-1 text-sm font-medium text-primary mb-5">
+                <Stethoscope className="w-4 h-4" />
+                Diseñado para clínicas dentales y estéticas
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Si tienes primeras visitas, auditamos estas cuatro fugas
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                La auditoría no pide datos clínicos. Miramos proceso, canales y métricas aproximadas para detectar
+                dónde se rompe el tramo de solicitud a cita confirmada.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {clinicLeaks.map((leak, index) => (
+                <motion.div
+                  key={leak.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                >
+                  <Card className="h-full">
+                    <CardContent className="pt-6">
+                      <leak.icon className="w-8 h-8 text-primary mb-4" />
+                      <h3 className="font-semibold mb-2">{leak.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{leak.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -246,6 +339,69 @@ const HomePage = () => {
                   </Card>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-muted/40">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.85fr] gap-10 items-start">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="inline-flex items-center gap-2 rounded-full border bg-background px-3 py-1 text-sm font-medium text-primary mb-5">
+                  <ClipboardCheck className="w-4 h-4" />
+                  Piloto fundador sin riesgo
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  Primero diagnóstico. Después, un piloto pequeño y medible.
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                  El objetivo no es conectar todo tu stack de golpe. Empezamos por un solo flujo:
+                  un canal, una agenda, una regla de seguimiento y una métrica de recuperación.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {auditSteps.map((step, index) => (
+                    <div key={step.title} className="rounded-lg border bg-background p-4">
+                      <div className="text-sm font-semibold text-primary mb-2">0{index + 1}</div>
+                      <h3 className="font-semibold mb-2">{step.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <Card>
+                  <CardContent className="pt-6">
+                    <Shield className="w-8 h-8 text-primary mb-4" />
+                    <h3 className="text-xl font-semibold mb-4">Guardrails desde la primera conversación</h3>
+                    <div className="space-y-3">
+                      {trustSignals.map((signal) => (
+                        <div key={signal} className="flex items-start gap-3">
+                          <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                          <p className="text-sm text-muted-foreground leading-relaxed">{signal}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <Link to="/demo" className="block mt-6">
+                      <Button className="w-full">
+                        Solicitar auditoría
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </div>
           </div>
         </section>
