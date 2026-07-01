@@ -26,10 +26,13 @@ Use this wording before mentioning AI:
 - [[03-Lead-Machine/Lead-Gen-Bot-Adaptation]]
 - [[03-Lead-Machine/Outreach-Playbook]]
 - [[04-Pipeline/First-Client-Pipeline]]
+- [[04-Pipeline/Real-Account-Batch-2026-07-01]]
+- [[04-Pipeline/Lead-Shortlist]]
 - [[06-Audits-Demos/Audit-Template]]
 - [[06-Audits-Demos/Pilot-Proposal-Template]]
 - [[05-Meetings/Agent-War-Room]]
 - [[05-Meetings/2026-07-01-Agent-Council]]
+- [[05-Meetings/2026-07-01-Real-Account-Review]]
 
 ## Weekly Scoreboard
 

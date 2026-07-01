@@ -40,3 +40,18 @@ These are categories, not verified leads. Use them to build the first list:
 - Physiotherapy clinics with WhatsApp booking.
 - Real estate agencies with property visit requests.
 - Legal or tax advisory firms offering first consultation.
+
+## Active Real Batch
+
+Use [[Real-Account-Batch-2026-07-01]] as the current working batch.
+
+The first outreach shortlist is:
+
+1. [[Accounts/Clinica Dental Perez Belmonte]]
+2. [[Accounts/Clinica Dental AHOA]]
+3. [[Accounts/Clinica Pardinas]]
+4. [[Accounts/Clinica Dra Garrigos]]
+5. [[Accounts/Sculpture Clinic]]
+6. [[Accounts/Clinica Dental Bayona]]
+
+The next concrete action is manual review and contact through public business channels only.
