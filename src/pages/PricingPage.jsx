@@ -17,7 +17,7 @@ const PricingPage = () => {
     {
       id: 'starter',
       name: 'Starter',
-      price: '99€',
+      price: '29€',
       description: 'Para equipos que empiezan con automatización',
       features: [
         '1 usuario',
@@ -32,7 +32,7 @@ const PricingPage = () => {
     {
       id: 'growth',
       name: 'Growth',
-      price: '249€',
+      price: '79€',
       description: 'Para equipos comerciales en crecimiento',
       features: [
         '5 usuarios',
@@ -48,7 +48,7 @@ const PricingPage = () => {
     {
       id: 'pro',
       name: 'Pro',
-      price: '499€',
+      price: '179€',
       description: 'Para organizaciones con alto volumen',
       features: [
         'Usuarios ilimitados',
@@ -83,7 +83,7 @@ const PricingPage = () => {
         <title>Precios - CitaLink</title>
         <meta
           name="description"
-          content="Planes de precios para CitaLink: Starter (99€/mes), Growth (249€/mes), Pro (499€/mes). Incluye setup recomendado desde 499€."
+          content="Planes de precios para CitaLink: Starter (29€/mes), Growth (79€/mes), Pro (179€/mes). Incluye setup desde 99€."
         />
       </Helmet>
 
@@ -140,7 +140,7 @@ const PricingPage = () => {
               <p className="text-sm text-muted-foreground mb-2">
                 Setup y configuración inicial recomendada
               </p>
-              <p className="text-2xl font-bold mb-4">Desde 499€</p>
+              <p className="text-2xl font-bold mb-4">Desde 99€</p>
               <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
                 Incluye configuración de agentes, integración con tu CRM, importación de leads históricos 
                 y formación del equipo. Pago único.

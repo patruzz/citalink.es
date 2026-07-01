@@ -7,8 +7,8 @@ tier: A
 sector: dental
 city: A Coruna
 owner: Pat
-next_action: enviar_email_personalizado
-last_touch:
+next_action: llamar_central_y_enviar_draft_si_autorizan
+last_touch: 2026-07-01 18:16 Gmail draft created
 audit_date:
 pilot_probability: high
 do_not_contact: false
@@ -58,4 +58,4 @@ Estoy trabajando en CitaLink, un sistema para recuperar solicitudes que ya llega
 
 ## Contact History
 
--
+- 2026-07-01 18:16 - Gmail draft - Draft created to `clinicapardinas@clinicapardinas.com`, not sent. Draft ID: `r7939034041296425805`. Next: call 981 214 000 and ask for reception/first-visits owner.

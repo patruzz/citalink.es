@@ -40,3 +40,11 @@ npm run voice:smoke
 ```
 
 The voice agent exposes Twilio call creation, TwiML, status callbacks, and a Media Streams WebSocket bridge for OpenAI Realtime. Without Twilio credentials it runs in dry-run mode.
+
+To test PocketBase persistence, run PocketBase and the voice agent with the same `CITALINK_SERVICE_SECRET`, then:
+
+```sh
+npm run voice:integration-smoke
+```
+
+The local runtime hook is `backend/pb_hooks/voice-agent-ingest.pb.js`. A tracked copy lives in `ops/pocketbase/pb_hooks/voice-agent-ingest.pb.js` because `backend/` stays ignored on `main` for Hostinger.

@@ -7,8 +7,8 @@ tier: A
 sector: dental
 city: Vitoria-Gasteiz
 owner: Pat
-next_action: enviar_email_o_formulario
-last_touch:
+next_action: llamar_central_y_enviar_draft_si_autorizan
+last_touch: 2026-07-01 18:16 Gmail draft created
 audit_date:
 pilot_probability: high
 do_not_contact: false
@@ -60,4 +60,4 @@ CitaLink recupera ese tramo con respuesta rapida, cualificacion, propuesta de ci
 
 ## Contact History
 
--
+- 2026-07-01 18:16 - Gmail draft - Draft created to `info@perezbelmonte.com`, not sent. Draft ID: `r-2330706235350828524`. Next: call 945 26 90 58 and ask for reception/first-visits owner.

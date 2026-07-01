@@ -30,8 +30,11 @@ Scope:
 
 Price hypothesis:
 
-- Setup: 299-499 EUR for early adopters.
-- Monthly pilot: 149-249 EUR.
+- Setup: 99 EUR for early adopters.
+- Monthly pilot: 29-179 EUR depending on plan.
+  - Starter: 29 EUR/mes.
+  - Growth: 79 EUR/mes (recommended).
+  - Pro: 179 EUR/mes.
 - Success expansion after proof: Growth plan.
 
 ## 7 Day Sprint

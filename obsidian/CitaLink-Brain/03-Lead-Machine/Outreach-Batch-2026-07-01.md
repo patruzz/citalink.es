@@ -206,4 +206,7 @@ Use this table after manual outreach.
 
 | Date | Account | Channel | Contacted by | Outcome | Next action | DNC |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026-07-01 18:16 | Clinica Dental Perez Belmonte | Gmail draft | Codex for Patrick | Draft created, not sent | Call central; send draft only after approval or phone permission | No |
+| 2026-07-01 18:16 | Clinica Dental AHOA | Gmail draft | Codex for Patrick | Draft created, not sent | Call central; send draft only after approval or phone permission | No |
+| 2026-07-01 18:16 | Clinica Pardinas | Gmail draft | Codex for Patrick | Draft created, not sent | Call central; send draft only after approval or phone permission | No |
 |  |  |  |  |  |  |  |

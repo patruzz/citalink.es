@@ -7,8 +7,8 @@ tier: A
 sector: dental
 city: Barcelona
 owner: Pat
-next_action: enviar_email_personalizado
-last_touch:
+next_action: llamar_central_y_enviar_draft_si_autorizan
+last_touch: 2026-07-01 18:16 Gmail draft created
 audit_date:
 pilot_probability: high
 do_not_contact: false
@@ -58,4 +58,4 @@ Estoy buscando 1-2 clinicas para un piloto fundador de recuperacion de citas. ¿
 
 ## Contact History
 
--
+- 2026-07-01 18:16 - Gmail draft - Draft created to `clinica@ahoa.es`, not sent. Draft ID: `r-110393860106009915`. Next: call 93 343 66 41 and ask for reception/first-visits owner.
