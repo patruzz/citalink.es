@@ -1,0 +1,29 @@
+{
+  "profile": "citalink-first-customer",
+  "project": "citalink",
+  "mission": "book-first-15-minute-audit",
+  "role": "strategist",
+  "safeContextLevel": "confidential-review-required",
+  "status": "review_required_before_external_use",
+  "providerKey": "kimi",
+  "provider": {
+    "provider": "Kimi / Moonshot",
+    "apiKeyEnv": "MOONSHOT_API_KEY",
+    "baseURL": "https://api.moonshot.ai/v1",
+    "model": "kimi-k2.6",
+    "docs": "https://platform.kimi.ai/docs/guide/start-using-kimi-api"
+  },
+  "sourceFiles": [
+    "obsidian/CitaLink-Brain/00-Index.md",
+    "obsidian/CitaLink-Brain/00-System/AI-Interoperability-Protocol.md",
+    "obsidian/CitaLink-Brain/00-System/Provider-Profiles.md",
+    "obsidian/CitaLink-Brain/01-Strategy/First-Customer-Plan.md",
+    "obsidian/CitaLink-Brain/03-Lead-Machine/Compliance-Outreach-Guardrails.md",
+    "obsidian/CitaLink-Brain/03-Lead-Machine/Outreach-Batch-2026-07-01.md",
+    "obsidian/CitaLink-Brain/06-Audits-Demos/First-Audit-48h-Sprint.md",
+    "obsidian/CitaLink-Brain/06-Audits-Demos/Microaudits/Perez-Belmonte-Microaudit.md",
+    "obsidian/CitaLink-Brain/06-Audits-Demos/Microaudits/AHOA-Microaudit.md",
+    "obsidian/CitaLink-Brain/06-Audits-Demos/Microaudits/Pardinas-Microaudit.md"
+  ],
+  "generatedAt": "2026-07-01T16:53:56.086Z"
+}

@@ -16,6 +16,10 @@ Use this wording before mentioning AI:
 
 ## Core Maps
 
+- [[00-System/Multi-Project-Brain-Architecture]]
+- [[00-System/AI-Interoperability-Protocol]]
+- [[00-System/Provider-Profiles]]
+- [[00-System/Project-Registry]]
 - [[01-Strategy/First-Customer-Plan]]
 - [[02-Agents/Agent-Team]]
 - [[02-ICP/ICP-Clinicas-Dentales]]
@@ -36,6 +40,8 @@ Use this wording before mentioning AI:
 - [[06-Audits-Demos/Microaudits/Perez-Belmonte-Microaudit]]
 - [[06-Audits-Demos/Microaudits/AHOA-Microaudit]]
 - [[06-Audits-Demos/Microaudits/Pardinas-Microaudit]]
+- [[10-External-AI/Provider-Readme]]
+- [[10-External-AI/External-AI-Handoff-Template]]
 - [[05-Meetings/Agent-War-Room]]
 - [[05-Meetings/2026-07-01-Agent-Council]]
 - [[05-Meetings/2026-07-01-Real-Account-Review]]
@@ -59,3 +65,4 @@ Use this wording before mentioning AI:
 - Measure leakage: response time, missed calls, abandoned forms, no-shows, reprogramming.
 - Keep the first pilot painfully narrow.
 - Write every real customer learning back into this vault.
+- Share only reviewed context packs with external AIs.
