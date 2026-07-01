@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
@@ -9,60 +8,63 @@ import Footer from '@/components/Footer.jsx';
 import PricingCard from '@/components/PricingCard.jsx';
 import { createStripeCheckoutSession } from '@/lib/citalinkApi.js';
 
+const plans = [
+  {
+    id: 'starter',
+    name: 'Starter',
+    price: '19€',
+    setupPrice: '49€ único',
+    description: 'Para equipos que empiezan con automatización',
+    features: [
+      '1 usuario',
+      '1 calendario conectado',
+      '300 leads/mes',
+      'Email AI Agent',
+      'Plantillas básicas',
+      'Soporte por email',
+    ],
+    highlighted: false,
+  },
+  {
+    id: 'growth',
+    name: 'Growth',
+    price: '59€',
+    setupPrice: '49€ único',
+    description: 'Para equipos comerciales en crecimiento',
+    features: [
+      '5 usuarios',
+      '3 calendarios conectados',
+      '1.500 leads/mes',
+      'Email + Phone AI Agents',
+      'Analítica avanzada',
+      'Integraciones CRM',
+      'Soporte prioritario',
+    ],
+    highlighted: true,
+  },
+  {
+    id: 'pro',
+    name: 'Pro',
+    price: '129€',
+    setupPrice: '49€ único',
+    description: 'Para organizaciones con alto volumen',
+    features: [
+      'Usuarios ilimitados',
+      'Calendarios ilimitados',
+      'Leads ilimitados',
+      'Todos los agentes IA',
+      'Agentes personalizados',
+      'Integraciones custom',
+      'Soporte dedicado',
+      'Onboarding personalizado',
+    ],
+    highlighted: false,
+  },
+];
+
 const PricingPage = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(null);
-
-  const plans = [
-    {
-      id: 'starter',
-      name: 'Starter',
-      price: '29€',
-      description: 'Para equipos que empiezan con automatización',
-      features: [
-        '1 usuario',
-        '1 calendario conectado',
-        '300 leads/mes',
-        'Email AI Agent',
-        'Plantillas básicas',
-        'Soporte por email',
-      ],
-      highlighted: false,
-    },
-    {
-      id: 'growth',
-      name: 'Growth',
-      price: '79€',
-      description: 'Para equipos comerciales en crecimiento',
-      features: [
-        '5 usuarios',
-        '3 calendarios conectados',
-        '1.500 leads/mes',
-        'Email + Phone AI Agents',
-        'Analítica avanzada',
-        'Integraciones CRM',
-        'Soporte prioritario',
-      ],
-      highlighted: true,
-    },
-    {
-      id: 'pro',
-      name: 'Pro',
-      price: '179€',
-      description: 'Para organizaciones con alto volumen',
-      features: [
-        'Usuarios ilimitados',
-        'Calendarios ilimitados',
-        'Leads ilimitados',
-        'Todos los agentes IA',
-        'Agentes personalizados',
-        'Integraciones custom',
-        'Soporte dedicado 24/7',
-        'Onboarding personalizado',
-      ],
-      highlighted: false,
-    },
-  ];
 
   const handleCheckout = async (plan) => {
     try {
@@ -83,7 +85,7 @@ const PricingPage = () => {
         <title>Precios - CitaLink</title>
         <meta
           name="description"
-          content="Planes de precios para CitaLink: Starter (29€/mes), Growth (79€/mes), Pro (179€/mes). Incluye setup desde 99€."
+          content="Planes de precios para CitaLink: Starter (19€/mes), Growth (59€/mes), Pro (129€/mes). Setup inicial 49€."
         />
       </Helmet>
 
@@ -98,7 +100,7 @@ const PricingPage = () => {
               transition={{ duration: 0.6 }}
               className="max-w-3xl mx-auto text-center mb-16"
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-6" style={{ letterSpacing: '-0.02em' }}>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Precios transparentes
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
@@ -118,6 +120,7 @@ const PricingPage = () => {
                   <PricingCard
                     name={plan.name}
                     price={plan.price}
+                    setupPrice={plan.setupPrice}
                     description={plan.description}
                     features={plan.features}
                     highlighted={plan.highlighted}
@@ -135,15 +138,15 @@ const PricingPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-muted/50 border rounded-2xl p-8 text-center"
+              className="rounded-lg border border-white/10 bg-muted/50 p-8 text-center"
             >
               <p className="text-sm text-muted-foreground mb-2">
-                Setup y configuración inicial recomendada
+                Setup y configuración inicial
               </p>
-              <p className="text-2xl font-bold mb-4">Desde 99€</p>
+              <p className="text-2xl font-bold mb-4">49€ pago único</p>
               <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
-                Incluye configuración de agentes, integración con tu CRM, importación de leads históricos 
-                y formación del equipo. Pago único.
+                Incluye configuración de agentes, integración con tu CRM, importación de leads históricos
+                y formación del equipo.
               </p>
             </motion.div>
           </div>
