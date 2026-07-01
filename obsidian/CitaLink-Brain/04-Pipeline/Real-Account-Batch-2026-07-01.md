@@ -40,10 +40,14 @@ Recommended first move:
 - 3 follow-up calls where phone is public.
 - 1 Loom-style audit for the top dental account.
 
+Use [[../03-Lead-Machine/Outreach-Batch-2026-07-01]] for copy, channel priority, follow-up timing, and send log.
+
 ## Compliance Check
 
 - Use public business channels only.
 - Keep the first message manual and specific.
+- Prefer phone central or general corporate form before email.
+- Do not use WhatsApp for cold outreach.
 - No claims about guaranteed recovered revenue.
 - No health data requested before consent.
 - Stop immediately on opt-out.

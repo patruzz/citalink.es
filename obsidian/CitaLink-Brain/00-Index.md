@@ -25,6 +25,8 @@ Use this wording before mentioning AI:
 - [[03-Lead-Machine/Lead-Schema]]
 - [[03-Lead-Machine/Lead-Gen-Bot-Adaptation]]
 - [[03-Lead-Machine/Outreach-Playbook]]
+- [[03-Lead-Machine/Compliance-Outreach-Guardrails]]
+- [[03-Lead-Machine/Outreach-Batch-2026-07-01]]
 - [[04-Pipeline/First-Client-Pipeline]]
 - [[04-Pipeline/Real-Account-Batch-2026-07-01]]
 - [[04-Pipeline/Lead-Shortlist]]
@@ -33,6 +35,7 @@ Use this wording before mentioning AI:
 - [[05-Meetings/Agent-War-Room]]
 - [[05-Meetings/2026-07-01-Agent-Council]]
 - [[05-Meetings/2026-07-01-Real-Account-Review]]
+- [[05-Meetings/2026-07-01-Outreach-Council]]
 
 ## Weekly Scoreboard
 

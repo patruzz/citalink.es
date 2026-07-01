@@ -1,8 +1,17 @@
 # Outreach Playbook
 
+Use this playbook for manual, low-volume outreach only. CitaLink should sell a useful operational diagnosis before trying to sell software.
+
 ## Positioning Sentence
 
 Ayudamos a negocios con cita previa a recuperar consultas que se pierden entre llamadas, WhatsApp, formularios y seguimientos manuales.
+
+## Channel Priority
+
+1. Phone central: ask who owns reception, operations, or appointment conversion.
+2. Corporate contact form: only when it is a general business contact form, not a patient, appointment, emergency, or clinical inquiry form.
+3. Generic corporate email: use only when public and business-facing.
+4. WhatsApp: do not use for cold outreach. Use it only after the clinic opts in or replies through that channel.
 
 ## First Message
 
@@ -14,17 +23,21 @@ Una fuga habitual en negocios como el vuestro es que una consulta tarde demasiad
 
 Estoy montando CitaLink para recuperar esas citas perdidas: respuesta rapida, cualificacion, propuesta de huecos y recordatorios, con revision humana.
 
-Te propongo una auditoria breve de 15 minutos: miramos vuestros canales actuales y estimamos donde se pueden estar perdiendo citas. Si no vemos oportunidad clara, te llevas igualmente el diagnostico.
+Te propongo una auditoria breve de 15 minutos: miramos vuestros canales actuales y estimamos donde se pueden estar perdiendo citas. Si no vemos oportunidad clara, os llevais igualmente el diagnostico.
 
-¿Te encaja verlo esta semana?
+Si no eres la persona adecuada o prefieres que no vuelva a contactar, responde con "baja" y lo elimino.
+
+Te encaja verlo esta semana?
 
 ## Follow-Up 1
 
 Hola {{name}}, te dejo una pregunta rapida:
 
-si entran 100 consultas al mes, ¿sabeis cuantas reciben respuesta en menos de 5 minutos y cuantas terminan en cita?
+si entran 100 consultas al mes, sabeis cuantas reciben respuesta en menos de 5 minutos y cuantas terminan en cita?
 
 Esa diferencia suele ser donde CitaLink aporta valor. Puedo ayudarte a calcularlo en una auditoria breve.
+
+Si no procede, no vuelvo a insistir por este canal.
 
 ## Follow-Up 2
 
@@ -59,3 +72,11 @@ El piloto puede empezar con revision humana: CitaLink prepara respuesta y siguie
 ### Ahora no tenemos tiempo
 
 La auditoria esta pensada para ser ligera: 15 minutos y una estimacion de fuga. Si no hay oportunidad clara, no seguimos.
+
+## Hard Rules
+
+- Do not ask for patient names, phone numbers, emails, medical histories, treatment details, photos, call recordings, CRM exports, screenshots with personal data, or appointment-level records before consent and a contract.
+- Do not use automated cold sequences.
+- Do not send cold WhatsApp messages.
+- Keep first contact manual, specific, and reversible.
+- Stop immediately after "no", "no interesa", "baja", "stop", or similar.
