@@ -24,6 +24,10 @@ do_not_contact: false
 
 - Official site: https://clinicapardinas.com/es/
 
+## Microaudit
+
+- [[../../06-Audits-Demos/Microaudits/Pardinas-Microaudit]]
+
 ## Pain Signals
 
 - Several entry points create operational complexity.

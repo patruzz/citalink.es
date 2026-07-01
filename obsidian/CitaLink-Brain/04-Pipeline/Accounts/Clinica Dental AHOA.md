@@ -25,6 +25,10 @@ do_not_contact: false
 - Official site: https://ahoa.es
 - Press profile: https://elpais.com/suscripciones/profesional/guia-empresas/2026-04-15/clinica-odontologica-ahoa-la-revolucion-de-los-implantes-dentales-inmediatos.html
 
+## Microaudit
+
+- [[../../06-Audits-Demos/Microaudits/AHOA-Microaudit]]
+
 ## Pain Signals
 
 - Multiple appointment channels create coordination load.

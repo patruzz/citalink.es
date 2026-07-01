@@ -39,12 +39,12 @@ The first audit should map one workflow only:
 
 Send three first touches first:
 
-1. Clinica Dental Perez Belmonte.
-2. Clinica Dental AHOA.
-3. Clinica Pardinas.
+1. [[../06-Audits-Demos/Microaudits/Perez-Belmonte-Microaudit]]
+2. [[../06-Audits-Demos/Microaudits/AHOA-Microaudit]]
+3. [[../06-Audits-Demos/Microaudits/Pardinas-Microaudit]]
 
 Hold the remaining three until at least one response pattern is observed.
 
 ## Next Action
 
-Before sending, Patrick should manually review each chosen contact channel and copy the sent message into the send log in [[../03-Lead-Machine/Outreach-Batch-2026-07-01]].
+Before sending, Patrick should manually review each chosen contact channel, open [[../06-Audits-Demos/First-Audit-48h-Sprint]], and copy the sent message into the send log in [[../03-Lead-Machine/Outreach-Batch-2026-07-01]].

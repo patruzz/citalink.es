@@ -11,6 +11,16 @@ This is the first manual outreach pack for the real-account batch.
 - Stop immediately on any negative reply or opt-out.
 - Offer an audit, not an automated deployment.
 
+## Execution Plan
+
+Use [[../06-Audits-Demos/First-Audit-48h-Sprint]] for the first 48 hours.
+
+Before contacting the first three accounts, open their microaudits:
+
+1. [[../06-Audits-Demos/Microaudits/Perez-Belmonte-Microaudit]]
+2. [[../06-Audits-Demos/Microaudits/AHOA-Microaudit]]
+3. [[../06-Audits-Demos/Microaudits/Pardinas-Microaudit]]
+
 ## Global Phone Opener
 
 Hola, soy Patrick de CitaLink. Estamos ayudando a clinicas a detectar citas que se pierden entre llamadas, WhatsApp, formularios y seguimiento manual.
@@ -22,6 +32,7 @@ He visto vuestra clinica y queria preguntar quien lleva operaciones, recepcion o
 ### Clinica Dental Perez Belmonte
 
 - Account note: [[../04-Pipeline/Accounts/Clinica Dental Perez Belmonte]]
+- Microaudit: [[../06-Audits-Demos/Microaudits/Perez-Belmonte-Microaudit]]
 - Preferred channel: phone central or corporate form. Email only if it is clearly corporate.
 - Subject: Primera valoracion gratuita sin fugas de agenda
 - Opening: He visto que ofreceis primera valoracion gratuita y que las citas os entran por telefono, WhatsApp y formulario.
@@ -50,6 +61,7 @@ Follow-up after 5-7 days:
 ### Clinica Dental AHOA
 
 - Account note: [[../04-Pipeline/Accounts/Clinica Dental AHOA]]
+- Microaudit: [[../06-Audits-Demos/Microaudits/AHOA-Microaudit]]
 - Preferred channel: phone central, corporate form, or generic corporate email.
 - Subject: Recuperar primeras visitas de implantologia en AHOA
 - Opening: He visto que trabajais primeras visitas, implantologia avanzada y varios canales de entrada: reserva online, telefono, email y WhatsApp.
@@ -78,6 +90,7 @@ Follow-up after 5-7 days:
 ### Clinica Pardinas
 
 - Account note: [[../04-Pipeline/Accounts/Clinica Pardinas]]
+- Microaudit: [[../06-Audits-Demos/Microaudits/Pardinas-Microaudit]]
 - Preferred channel: phone central, corporate form, or generic corporate email.
 - Subject: Consulta online, WhatsApp y cita presencial mejor conectados
 - Opening: He visto que combinan consulta online, WhatsApp, cita presencial y mucho contenido educativo alrededor de tratamientos dentales.

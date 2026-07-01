@@ -26,6 +26,10 @@ do_not_contact: false
 - Official site: https://www.perezbelmonte.com
 - Press profile: https://cadenaser.com/euskadi/2025/09/22/clinica-dental-perez-belmonte-referencia-integral-en-odontologia-en-vitoria-gasteiz-ser-vitoria/
 
+## Microaudit
+
+- [[../../06-Audits-Demos/Microaudits/Perez-Belmonte-Microaudit]]
+
 ## Pain Signals
 
 - Multiple channels: phone, WhatsApp, form.
