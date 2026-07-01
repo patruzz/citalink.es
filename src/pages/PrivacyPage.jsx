@@ -24,13 +24,13 @@ const PrivacyPage = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl font-bold mb-6" style={{ letterSpacing: '-0.02em' }}>
+            <h1 className="text-4xl font-bold mb-6">
               Política de privacidad
             </h1>
 
             <Card>
               <CardContent className="pt-6">
-                <div className="prose prose-sm max-w-none">
+                <div className="prose prose-invert prose-sm max-w-none">
                   <p className="text-muted-foreground mb-4">
                     Última actualización: {new Date().toLocaleDateString('es-ES')}
                   </p>

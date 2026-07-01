@@ -211,24 +211,24 @@ const DashboardPage = () => {
 
   const getStatusColor = (status) => {
     const colors = {
-      new: 'bg-blue-100 text-blue-800',
-      contacted: 'bg-yellow-100 text-yellow-800',
-      qualified: 'bg-green-100 text-green-800',
-      lost: 'bg-gray-100 text-gray-800',
-      confirmed: 'bg-green-100 text-green-800',
-      pending: 'bg-yellow-100 text-yellow-800',
-      cancelled: 'bg-red-100 text-red-800',
-      sent: 'bg-green-100 text-green-800',
-      draft: 'bg-blue-100 text-blue-800',
-      review: 'bg-amber-100 text-amber-800',
-      blocked: 'bg-red-100 text-red-800',
-      approved: 'bg-green-100 text-green-800',
-      failed: 'bg-red-100 text-red-800',
-      smtp_missing: 'bg-orange-100 text-orange-800',
-      blocked_missing_legal_basis: 'bg-red-100 text-red-800',
-      ready_for_review: 'bg-amber-100 text-amber-800',
+      new: 'border border-white/10 bg-background/60 text-muted-foreground',
+      contacted: 'border border-primary/20 bg-primary/10 text-primary',
+      qualified: 'border border-primary/20 bg-primary/10 text-primary',
+      lost: 'border border-white/10 bg-muted/60 text-muted-foreground',
+      confirmed: 'border border-primary/20 bg-primary/10 text-primary',
+      pending: 'border border-white/10 bg-muted/60 text-muted-foreground',
+      cancelled: 'border border-destructive/30 bg-destructive/10 text-red-100',
+      sent: 'border border-primary/20 bg-primary/10 text-primary',
+      draft: 'border border-white/10 bg-muted/60 text-muted-foreground',
+      review: 'border border-accent/30 bg-accent/10 text-rose-100',
+      blocked: 'border border-destructive/30 bg-destructive/10 text-red-100',
+      approved: 'border border-primary/20 bg-primary/10 text-primary',
+      failed: 'border border-destructive/30 bg-destructive/10 text-red-100',
+      smtp_missing: 'border border-accent/30 bg-accent/10 text-rose-100',
+      blocked_missing_legal_basis: 'border border-destructive/30 bg-destructive/10 text-red-100',
+      ready_for_review: 'border border-accent/30 bg-accent/10 text-rose-100',
     };
-    return colors[status] || 'bg-gray-100 text-gray-800';
+    return colors[status] || 'border border-white/10 bg-muted/60 text-muted-foreground';
   };
 
   if (loading) {
@@ -285,10 +285,10 @@ const DashboardPage = () => {
   const responseRate = outboundEmails > 0 ? `${Math.min(100, (inboundEmails / outboundEmails) * 100).toFixed(1)}%` : '0%';
 
   const kpis = [
-    { label: 'Demos recibidas', value: demoRequests.length, icon: Users, color: 'text-blue-600' },
-    { label: 'Emails enviados', value: outboundEmails, icon: MailCheck, color: 'text-green-600' },
-    { label: 'Tasa respuesta', value: responseRate, icon: TrendingUp, color: 'text-purple-600' },
-    { label: 'Acciones IA', value: reviewAgentActions.length + demoRequestActions.length, icon: Inbox, color: 'text-orange-600' },
+    { label: 'Demos recibidas', value: demoRequests.length, icon: Users, color: 'text-primary' },
+    { label: 'Emails enviados', value: outboundEmails, icon: MailCheck, color: 'text-primary' },
+    { label: 'Tasa respuesta', value: responseRate, icon: TrendingUp, color: 'text-accent' },
+    { label: 'Acciones IA', value: reviewAgentActions.length + demoRequestActions.length, icon: Inbox, color: 'text-foreground/80' },
   ];
 
   return (
@@ -724,7 +724,7 @@ const DashboardPage = () => {
                         <Input
                           id="companyName"
                           defaultValue={settings?.companyName || ''}
-                          className="text-gray-900 placeholder:text-gray-400"
+                          className="text-foreground placeholder:text-muted-foreground"
                         />
                       </div>
                       <div className="space-y-2">
@@ -733,7 +733,7 @@ const DashboardPage = () => {
                           id="contactEmail"
                           type="email"
                           defaultValue={settings?.contactEmail || 'pat@citalink.es'}
-                          className="text-gray-900 placeholder:text-gray-400"
+                          className="text-foreground placeholder:text-muted-foreground"
                         />
                       </div>
                       <div className="space-y-2">
@@ -742,7 +742,7 @@ const DashboardPage = () => {
                           id="businessHours"
                           defaultValue={settings?.businessHours || ''}
                           placeholder="Ej: Lunes a Viernes 9:00-18:00"
-                          className="text-gray-900 placeholder:text-gray-400"
+                          className="text-foreground placeholder:text-muted-foreground"
                         />
                       </div>
                       <div className="space-y-2">
@@ -752,7 +752,7 @@ const DashboardPage = () => {
                           rows={4}
                           defaultValue={settings?.contactPolicy || ''}
                           placeholder="Describe tu política de contacto con leads..."
-                          className="text-gray-900 placeholder:text-gray-400"
+                          className="text-foreground placeholder:text-muted-foreground"
                         />
                       </div>
                       <Button type="submit">Guardar cambios</Button>

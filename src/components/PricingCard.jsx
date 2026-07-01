@@ -19,7 +19,7 @@ const PricingCard = ({
   return (
     <Card
       className={`relative h-full overflow-hidden border-white/10 bg-card/90 transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 ${
-        highlighted ? 'ring-2 ring-primary shadow-[0_20px_80px_rgba(45,212,191,0.16)]' : ''
+        highlighted ? 'ring-2 ring-primary/70 shadow-[0_24px_90px_rgba(244,202,113,0.18)]' : ''
       }`}
     >
       {highlighted && (

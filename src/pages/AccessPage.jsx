@@ -90,7 +90,7 @@ const AccessPage = () => {
                           required
                           value={loginData.email}
                           onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
-                          className="text-gray-900 placeholder:text-gray-400"
+                          className="text-foreground placeholder:text-muted-foreground"
                         />
                       </div>
                       <div className="space-y-2">
@@ -101,7 +101,7 @@ const AccessPage = () => {
                           required
                           value={loginData.password}
                           onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
-                          className="text-gray-900 placeholder:text-gray-400"
+                          className="text-foreground placeholder:text-muted-foreground"
                         />
                       </div>
                       <Button type="submit" className="w-full" disabled={loading}>
@@ -120,7 +120,7 @@ const AccessPage = () => {
                           required
                           value={signupData.name}
                           onChange={(e) => setSignupData({ ...signupData, name: e.target.value })}
-                          className="text-gray-900 placeholder:text-gray-400"
+                          className="text-foreground placeholder:text-muted-foreground"
                         />
                       </div>
                       <div className="space-y-2">
@@ -131,7 +131,7 @@ const AccessPage = () => {
                           required
                           value={signupData.email}
                           onChange={(e) => setSignupData({ ...signupData, email: e.target.value })}
-                          className="text-gray-900 placeholder:text-gray-400"
+                          className="text-foreground placeholder:text-muted-foreground"
                         />
                       </div>
                       <div className="space-y-2">
@@ -143,7 +143,7 @@ const AccessPage = () => {
                           minLength={8}
                           value={signupData.password}
                           onChange={(e) => setSignupData({ ...signupData, password: e.target.value })}
-                          className="text-gray-900 placeholder:text-gray-400"
+                          className="text-foreground placeholder:text-muted-foreground"
                         />
                       </div>
                       <Button type="submit" className="w-full" disabled={loading}>

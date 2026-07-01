@@ -87,12 +87,12 @@ const DemoFormSection = () => {
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           {submitStatus === 'success' && (
-            <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
+            <div className="rounded-lg border border-primary/20 bg-primary/10 px-4 py-3 text-sm text-primary">
               Solicitud registrada. Te contactaremos para revisar el flujo de solicitud a cita confirmada.
             </div>
           )}
           {submitStatus === 'error' && (
-            <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+            <div className="rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-red-100">
               No hemos podido registrar la solicitud. Revisa los campos o contacta directamente en pat@citalink.es.
             </div>
           )}
@@ -105,7 +105,7 @@ const DemoFormSection = () => {
                 required
                 value={formData.name}
                 onChange={(e) => handleChange('name', e.target.value)}
-                className="text-gray-900 placeholder:text-gray-400"
+                className="text-foreground placeholder:text-muted-foreground"
               />
             </div>
             <div className="space-y-2">
@@ -116,7 +116,7 @@ const DemoFormSection = () => {
                 required
                 value={formData.company}
                 onChange={(e) => handleChange('company', e.target.value)}
-                className="text-gray-900 placeholder:text-gray-400"
+                className="text-foreground placeholder:text-muted-foreground"
               />
             </div>
           </div>
@@ -130,7 +130,7 @@ const DemoFormSection = () => {
                 required
                 value={formData.email}
                 onChange={(e) => handleChange('email', e.target.value)}
-                className="text-gray-900 placeholder:text-gray-400"
+                className="text-foreground placeholder:text-muted-foreground"
               />
             </div>
             <div className="space-y-2">
@@ -140,7 +140,7 @@ const DemoFormSection = () => {
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => handleChange('phone', e.target.value)}
-                className="text-gray-900 placeholder:text-gray-400"
+                className="text-foreground placeholder:text-muted-foreground"
               />
             </div>
           </div>
@@ -149,7 +149,7 @@ const DemoFormSection = () => {
             <div className="space-y-2">
               <Label htmlFor="sector">Sector</Label>
               <Select value={formData.sector} onValueChange={(value) => handleChange('sector', value)}>
-                <SelectTrigger id="sector" className="text-gray-900">
+                <SelectTrigger id="sector" className="text-foreground">
                   <SelectValue placeholder="Selecciona un sector" />
                 </SelectTrigger>
                 <SelectContent>
@@ -171,7 +171,7 @@ const DemoFormSection = () => {
                 type="number"
                 value={formData.monthlyLeads}
                 onChange={(e) => handleChange('monthlyLeads', e.target.value)}
-                className="text-gray-900 placeholder:text-gray-400"
+                className="text-foreground placeholder:text-muted-foreground"
               />
             </div>
           </div>
@@ -179,7 +179,7 @@ const DemoFormSection = () => {
           <div className="space-y-2">
             <Label htmlFor="mainChannel">Canal donde más se atascan las citas</Label>
             <Select value={formData.mainChannel} onValueChange={(value) => handleChange('mainChannel', value)}>
-              <SelectTrigger id="mainChannel" className="text-gray-900">
+              <SelectTrigger id="mainChannel" className="text-foreground">
                 <SelectValue placeholder="Selecciona un canal" />
               </SelectTrigger>
               <SelectContent>
@@ -201,7 +201,7 @@ const DemoFormSection = () => {
               value={formData.message}
               onChange={(e) => handleChange('message', e.target.value)}
               placeholder="Ejemplo: llamadas fuera de horario, formularios que tardan en responderse, WhatsApps sin seguimiento, no-shows..."
-              className="text-gray-900 placeholder:text-gray-400"
+              className="text-foreground placeholder:text-muted-foreground"
             />
           </div>
 

@@ -44,7 +44,7 @@ const DemoPage = () => {
               transition={{ duration: 0.6 }}
               className="max-w-3xl mx-auto text-center mb-12"
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-6" style={{ letterSpacing: '-0.02em' }}>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Solicita una auditoría de fuga de citas
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">

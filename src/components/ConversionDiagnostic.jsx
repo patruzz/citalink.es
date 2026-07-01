@@ -44,7 +44,7 @@ const ConversionDiagnostic = () => {
     };
   }, [appointmentValue, missedRate, monthlyLeads, recoveryRate]);
 
-  const inputClassName = 'text-gray-900 placeholder:text-gray-400';
+  const inputClassName = 'text-foreground placeholder:text-muted-foreground';
 
   return (
     <section className="py-20 bg-muted/40">
