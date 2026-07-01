@@ -13,7 +13,8 @@
 		"backend:dev": "powershell -ExecutionPolicy Bypass -File tools/start-pocketbase-dev.ps1",
 		"backend:smoke": "node tools/citalink-backend-smoke.mjs",
 		"voice:dev": "node tools/voice-agent-server.mjs",
-		"voice:smoke": "node tools/voice-agent-smoke.mjs"
+		"voice:smoke": "node tools/voice-agent-smoke.mjs",
+		"voice:integration-smoke": "node tools/voice-agent-integration-smoke.mjs"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^5.2.2",

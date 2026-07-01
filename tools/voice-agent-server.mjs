@@ -27,6 +27,10 @@ const port = Number(process.env.VOICE_AGENT_PORT || 8787);
 const publicUrl = (process.env.VOICE_AGENT_PUBLIC_URL || process.env.TWILIO_WEBHOOK_BASE_URL || `http://${host}:${port}`).replace(/\/+$/, '');
 const publicWsUrl = publicUrl.replace(/^http:/, 'ws:').replace(/^https:/, 'wss:');
 const realtimeModel = process.env.OPENAI_REALTIME_MODEL || 'gpt-4o-realtime-preview';
+const pocketBaseUrl = (process.env.CITALINK_API_BASE_URL || 'http://127.0.0.1:8090').replace(/\/+$/, '');
+const pocketBaseSyncEnabled = process.env.CITALINK_POCKETBASE_SYNC
+  ? process.env.CITALINK_POCKETBASE_SYNC !== 'false'
+  : Boolean(process.env.CITALINK_API_BASE_URL);
 const allowedLegalBasis = new Set(['inbound_request', 'existing_customer', 'consent', 'manual_approved_business_basis']);
 
 const hasValue = (value) => value !== undefined && value !== null && String(value).trim() !== '';
@@ -48,6 +52,48 @@ const sendJson = (response, status, payload) => {
 const sendXml = (response, status, xml) => {
   response.writeHead(status, { 'Content-Type': 'text/xml; charset=utf-8' });
   response.end(xml);
+};
+
+const summarizeSync = (result) => {
+  if (result.ok) return 'ok';
+  if (result.skipped) return 'skipped';
+  return 'failed';
+};
+
+const postPocketBase = async (path, payload, { timeoutMs = 2000 } = {}) => {
+  if (!pocketBaseSyncEnabled) {
+    return { ok: false, skipped: true, reason: 'disabled' };
+  }
+
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  const headers = { 'Content-Type': 'application/json' };
+  if (hasValue(process.env.CITALINK_SERVICE_SECRET)) {
+    headers['x-citalink-service-secret'] = process.env.CITALINK_SERVICE_SECRET;
+  }
+
+  try {
+    const response = await fetch(`${pocketBaseUrl}${path}`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+    const data = await response.json().catch(() => ({}));
+    return {
+      ok: response.ok && data.ok !== false,
+      status: response.status,
+      data,
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      status: 0,
+      error: error.name === 'AbortError' ? 'PocketBase sync timeout' : (error.message || String(error)),
+    };
+  } finally {
+    clearTimeout(timer);
+  }
 };
 
 const parsePayload = async (request) => {
@@ -127,7 +173,7 @@ const createTwilioCall = async ({ to, callSessionId, contactName, objective }) =
   const from = process.env.TWILIO_PHONE_NUMBER;
   const auth = Buffer.from(`${accountSid}:${authToken}`).toString('base64');
   const twimlUrl = `${publicUrl}/twilio/voice?callSessionId=${encodeURIComponent(callSessionId)}&contactName=${encodeURIComponent(contactName || '')}&objective=${encodeURIComponent(objective || '')}`;
-  const statusCallback = `${publicUrl}/twilio/status`;
+  const statusCallback = `${publicUrl}/twilio/status?callSessionId=${encodeURIComponent(callSessionId)}`;
 
   const body = new URLSearchParams({
     To: to,
@@ -179,6 +225,25 @@ const handleCreateCall = async (request, response) => {
   }
 
   const callSessionId = data.callSessionId || `call_${Date.now()}_${randomUUID().slice(0, 8)}`;
+  const baseSession = {
+    callSessionId,
+    clientId: data.clientId || '',
+    contactId: data.contactId || '',
+    fromNumber: process.env.TWILIO_PHONE_NUMBER || '',
+    toNumber: data.to,
+    direction: 'outbound',
+    status: dryRun ? 'queued_dry_run' : 'creating',
+    legalBasis: data.legalBasis,
+    objective: data.objective,
+    rawEvent: {
+      type: 'call_requested',
+      dryRun,
+      contactName: data.contactName || '',
+      source: 'voice-agent',
+    },
+  };
+  const sessionSync = await postPocketBase('/api/citalink/voice/session', baseSession);
+
   if (dryRun) {
     return sendJson(response, 200, {
       ok: true,
@@ -187,6 +252,7 @@ const handleCreateCall = async (request, response) => {
       status: 'queued_dry_run',
       twilioConfigured: twilioConfigured(),
       openaiConfigured: openaiConfigured(),
+      pocketBaseSync: summarizeSync(sessionSync),
     });
   }
 
@@ -197,14 +263,33 @@ const handleCreateCall = async (request, response) => {
       contactName: data.contactName,
       objective: data.objective,
     });
+    const twilioSync = await postPocketBase('/api/citalink/voice/session', {
+      ...baseSession,
+      twilioCallSid: twilioCall.sid,
+      status: twilioCall.status || 'queued',
+      rawEvent: {
+        type: 'twilio_call_created',
+        sid: twilioCall.sid,
+        status: twilioCall.status,
+      },
+    });
     return sendJson(response, 200, {
       ok: true,
       dryRun: false,
       callSessionId,
       twilioCallSid: twilioCall.sid,
       status: twilioCall.status,
+      pocketBaseSync: summarizeSync(twilioSync.ok ? twilioSync : sessionSync),
     });
   } catch (error) {
+    await postPocketBase('/api/citalink/voice/status', {
+      callSessionId,
+      status: 'create_failed',
+      rawEvent: {
+        type: 'twilio_call_create_failed',
+        message: error.message || String(error),
+      },
+    });
     return sendJson(response, 502, { ok: false, error: error.message || String(error) });
   }
 };
@@ -232,6 +317,14 @@ const handleTwilioVoice = async (request, response) => {
   if (!validateTwilioSignature(request, data)) {
     return sendXml(response, 403, '<Response><Reject /></Response>');
   }
+  const url = new URL(request.url, publicUrl);
+  await postPocketBase('/api/citalink/voice/event', {
+    callSessionId: url.searchParams.get('callSessionId') || '',
+    twilioCallSid: data.CallSid || '',
+    status: data.CallStatus || 'answered',
+    eventType: 'voice_webhook',
+    rawEvent: data,
+  }, { timeoutMs: 1200 });
   return sendXml(response, 200, twimlForCall(request.url));
 };
 
@@ -240,10 +333,19 @@ const handleTwilioStatus = async (request, response) => {
   if (!validateTwilioSignature(request, data)) {
     return sendJson(response, 403, { ok: false, error: 'Firma Twilio invalida.' });
   }
+  const url = new URL(request.url, publicUrl);
+  const sync = await postPocketBase('/api/citalink/voice/status', {
+    callSessionId: url.searchParams.get('callSessionId') || data.callSessionId || '',
+    twilioCallSid: data.CallSid || '',
+    status: data.CallStatus || '',
+    durationSeconds: data.CallDuration || data.Duration || '',
+    rawEvent: data,
+  }, { timeoutMs: 1500 });
   return sendJson(response, 200, {
     ok: true,
     callSid: data.CallSid,
     callStatus: data.CallStatus,
+    pocketBaseSync: summarizeSync(sync),
   });
 };
 
@@ -318,7 +420,7 @@ const attachWsParser = (socket, onText) => {
   });
 };
 
-const connectRealtime = ({ twilioSocket, getStreamSid, contactName, objective }) => {
+const connectRealtime = ({ twilioSocket, getStreamSid, contactName, objective, onEvent }) => {
   if (!openaiConfigured()) return null;
 
   const ws = new WebSocket(`wss://api.openai.com/v1/realtime?model=${encodeURIComponent(realtimeModel)}`, [], {
@@ -366,7 +468,26 @@ const connectRealtime = ({ twilioSocket, getStreamSid, contactName, objective })
         media: { payload: data.delta },
       });
     }
+    if (data.type === 'response.audio_transcript.delta' && data.delta) {
+      onEvent?.({
+        eventType: 'transcript_delta',
+        speaker: 'assistant',
+        transcriptDelta: data.delta,
+      });
+    }
+    if (data.type === 'conversation.item.input_audio_transcription.completed' && data.transcript) {
+      onEvent?.({
+        eventType: 'transcript_delta',
+        speaker: 'user',
+        transcriptDelta: data.transcript,
+      });
+    }
     if (data.type === 'error') {
+      onEvent?.({
+        eventType: 'openai_error',
+        status: 'realtime_error',
+        rawEvent: { type: data.type, message: data.error?.message || 'OpenAI realtime error' },
+      });
       sendWsText(twilioSocket, {
         event: 'mark',
         streamSid: getStreamSid(),
@@ -401,17 +522,34 @@ const handleMediaSocket = (request, socket) => {
 
   let streamSid = '';
   let realtimeSocket = null;
+  let callSessionId = '';
 
   attachWsParser(socket, (text) => {
     const message = JSON.parse(text);
     if (message.event === 'start') {
       streamSid = message.start?.streamSid || '';
       const params = message.start?.customParameters || {};
+      callSessionId = params.callSessionId || '';
+      void postPocketBase('/api/citalink/voice/event', {
+        callSessionId,
+        eventType: 'media_start',
+        status: 'in_progress',
+        rawEvent: {
+          streamSid,
+          customParameters: params,
+        },
+      });
       realtimeSocket = connectRealtime({
         twilioSocket: socket,
         getStreamSid: () => streamSid,
         contactName: params.contactName || '',
         objective: params.objective || 'Cualificar lead y agendar cita.',
+        onEvent: (eventPayload) => {
+          void postPocketBase('/api/citalink/voice/event', {
+            callSessionId,
+            ...eventPayload,
+          }, { timeoutMs: 1000 });
+        },
       });
       return;
     }
@@ -425,12 +563,31 @@ const handleMediaSocket = (request, socket) => {
     }
 
     if (message.event === 'stop') {
+      void postPocketBase('/api/citalink/voice/event', {
+        callSessionId,
+        eventType: 'media_stop',
+        status: 'media_stopped',
+        rawEvent: {
+          streamSid,
+        },
+      });
       realtimeSocket?.close();
       socket.end();
     }
   });
 
-  socket.on('close', () => realtimeSocket?.close());
+  socket.on('close', () => {
+    if (callSessionId) {
+      void postPocketBase('/api/citalink/voice/event', {
+        callSessionId,
+        eventType: 'media_socket_closed',
+        rawEvent: {
+          streamSid,
+        },
+      });
+    }
+    realtimeSocket?.close();
+  });
 };
 
 const server = createServer(async (request, response) => {
@@ -445,6 +602,9 @@ const server = createServer(async (request, response) => {
         mediaStreamUrl: `${publicWsUrl}/twilio/media`,
         twilioConfigured: twilioConfigured(),
         openaiConfigured: openaiConfigured(),
+        pocketBaseSyncEnabled,
+        pocketBaseUrl,
+        serviceSecretConfigured: hasValue(process.env.CITALINK_SERVICE_SECRET),
         signatureValidation: process.env.TWILIO_SIGNATURE_DISABLED === 'true' ? 'disabled' : 'enabled',
       });
     }

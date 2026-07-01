@@ -1,0 +1,70 @@
+# CitaLink Brain
+
+This is the Obsidian-compatible project brain for CitaLink.
+
+## North Star
+
+Get the first CitaLink customer by selling a narrow appointment recovery pilot to an appointment-heavy business.
+
+## Current Positioning
+
+CitaLink recovers lost appointments for businesses that sell through booked meetings.
+
+Use this wording before mentioning AI:
+
+> Recuperamos citas que hoy se pierden entre llamadas, WhatsApp, formularios y seguimientos manuales.
+
+## Core Maps
+
+- [[00-System/Multi-Project-Brain-Architecture]]
+- [[00-System/AI-Interoperability-Protocol]]
+- [[00-System/Provider-Profiles]]
+- [[00-System/Project-Registry]]
+- [[01-Strategy/First-Customer-Plan]]
+- [[02-Agents/Agent-Team]]
+- [[02-ICP/ICP-Clinicas-Dentales]]
+- [[02-ICP/ICP-Clinicas-Esteticas]]
+- [[02-ICP/Pain-Signals]]
+- [[03-Lead-Machine/Lead-Scoring]]
+- [[03-Lead-Machine/Lead-Schema]]
+- [[03-Lead-Machine/Lead-Gen-Bot-Adaptation]]
+- [[03-Lead-Machine/Outreach-Playbook]]
+- [[03-Lead-Machine/Compliance-Outreach-Guardrails]]
+- [[03-Lead-Machine/Outreach-Batch-2026-07-01]]
+- [[03-Lead-Machine/Outreach-Execution-2026-07-01]]
+- [[04-Pipeline/First-Client-Pipeline]]
+- [[04-Pipeline/Real-Account-Batch-2026-07-01]]
+- [[04-Pipeline/Lead-Shortlist]]
+- [[06-Audits-Demos/Audit-Template]]
+- [[06-Audits-Demos/Pilot-Proposal-Template]]
+- [[06-Audits-Demos/First-Audit-48h-Sprint]]
+- [[06-Audits-Demos/Voice-Agent-Test-2026-07-01]]
+- [[06-Audits-Demos/Microaudits/Perez-Belmonte-Microaudit]]
+- [[06-Audits-Demos/Microaudits/AHOA-Microaudit]]
+- [[06-Audits-Demos/Microaudits/Pardinas-Microaudit]]
+- [[10-External-AI/Provider-Readme]]
+- [[10-External-AI/External-AI-Handoff-Template]]
+- [[05-Meetings/Agent-War-Room]]
+- [[05-Meetings/2026-07-01-Agent-Council]]
+- [[05-Meetings/2026-07-01-Real-Account-Review]]
+- [[05-Meetings/2026-07-01-Outreach-Council]]
+
+## Weekly Scoreboard
+
+| Metric | Target |
+| --- | ---: |
+| New qualified accounts researched | 50 |
+| Tier A accounts selected | 10 |
+| Personalized outreach sent | 20 |
+| Conversations started | 5 |
+| Audits booked | 2 |
+| Pilot proposed | 1 |
+
+## Rules
+
+- Sell the audit before selling the platform.
+- Use clinic, dental, aesthetics, real estate, and professional-service language instead of generic SaaS language.
+- Measure leakage: response time, missed calls, abandoned forms, no-shows, reprogramming.
+- Keep the first pilot painfully narrow.
+- Write every real customer learning back into this vault.
+- Share only reviewed context packs with external AIs.

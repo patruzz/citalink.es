@@ -1,0 +1,29 @@
+{
+  "profile": "citalink-first-customer",
+  "project": "citalink",
+  "mission": "book-first-15-minute-audit",
+  "role": "strategist",
+  "safeContextLevel": "confidential-review-required",
+  "status": "review_required_before_external_use",
+  "providerKey": "glm",
+  "provider": {
+    "provider": "GLM / Z.AI",
+    "apiKeyEnv": "ZAI_API_KEY",
+    "baseURL": "https://api.z.ai/api/paas/v4/",
+    "model": "glm-5.2",
+    "docs": "https://docs.z.ai/api-reference/introduction"
+  },
+  "sourceFiles": [
+    "obsidian/CitaLink-Brain/00-Index.md",
+    "obsidian/CitaLink-Brain/00-System/AI-Interoperability-Protocol.md",
+    "obsidian/CitaLink-Brain/00-System/Provider-Profiles.md",
+    "obsidian/CitaLink-Brain/01-Strategy/First-Customer-Plan.md",
+    "obsidian/CitaLink-Brain/03-Lead-Machine/Compliance-Outreach-Guardrails.md",
+    "obsidian/CitaLink-Brain/03-Lead-Machine/Outreach-Batch-2026-07-01.md",
+    "obsidian/CitaLink-Brain/06-Audits-Demos/First-Audit-48h-Sprint.md",
+    "obsidian/CitaLink-Brain/06-Audits-Demos/Microaudits/Perez-Belmonte-Microaudit.md",
+    "obsidian/CitaLink-Brain/06-Audits-Demos/Microaudits/AHOA-Microaudit.md",
+    "obsidian/CitaLink-Brain/06-Audits-Demos/Microaudits/Pardinas-Microaudit.md"
+  ],
+  "generatedAt": "2026-07-01T16:53:56.100Z"
+}

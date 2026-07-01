@@ -54,7 +54,7 @@ const DemoFormSection = () => {
       }, { $autoCancel: false });
 
       setSubmitStatus('success');
-      toast.success('Demo solicitada. Te contactaremos para revisar tu flujo comercial.');
+      toast.success('Auditoría solicitada. Te contactaremos para revisar tu flujo de citas.');
       
       setFormData({
         name: '',
@@ -79,20 +79,20 @@ const DemoFormSection = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Solicitar demo personalizada</CardTitle>
+        <CardTitle>Solicitar auditoría de 15 minutos</CardTitle>
         <CardDescription>
-          Completa el formulario y te contactaremos para revisar tu flujo comercial
+          Cuéntanos lo mínimo para preparar una primera hipótesis de fuga. No incluyas datos de pacientes.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           {submitStatus === 'success' && (
-            <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
-              Solicitud registrada. El backend notificará a pat@citalink.es y enviará confirmación si el correo está configurado.
+            <div className="rounded-lg border border-primary/20 bg-primary/10 px-4 py-3 text-sm text-primary">
+              Solicitud registrada. Te contactaremos para revisar el flujo de solicitud a cita confirmada.
             </div>
           )}
           {submitStatus === 'error' && (
-            <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+            <div className="rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-red-100">
               No hemos podido registrar la solicitud. Revisa los campos o contacta directamente en pat@citalink.es.
             </div>
           )}
@@ -105,7 +105,7 @@ const DemoFormSection = () => {
                 required
                 value={formData.name}
                 onChange={(e) => handleChange('name', e.target.value)}
-                className="text-gray-900 placeholder:text-gray-400"
+                className="text-foreground placeholder:text-muted-foreground"
               />
             </div>
             <div className="space-y-2">
@@ -116,7 +116,7 @@ const DemoFormSection = () => {
                 required
                 value={formData.company}
                 onChange={(e) => handleChange('company', e.target.value)}
-                className="text-gray-900 placeholder:text-gray-400"
+                className="text-foreground placeholder:text-muted-foreground"
               />
             </div>
           </div>
@@ -130,7 +130,7 @@ const DemoFormSection = () => {
                 required
                 value={formData.email}
                 onChange={(e) => handleChange('email', e.target.value)}
-                className="text-gray-900 placeholder:text-gray-400"
+                className="text-foreground placeholder:text-muted-foreground"
               />
             </div>
             <div className="space-y-2">
@@ -140,7 +140,7 @@ const DemoFormSection = () => {
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => handleChange('phone', e.target.value)}
-                className="text-gray-900 placeholder:text-gray-400"
+                className="text-foreground placeholder:text-muted-foreground"
               />
             </div>
           </div>
@@ -149,12 +149,13 @@ const DemoFormSection = () => {
             <div className="space-y-2">
               <Label htmlFor="sector">Sector</Label>
               <Select value={formData.sector} onValueChange={(value) => handleChange('sector', value)}>
-                <SelectTrigger id="sector" className="text-gray-900">
+                <SelectTrigger id="sector" className="text-foreground">
                   <SelectValue placeholder="Selecciona un sector" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="clinicas">Clínicas privadas</SelectItem>
-                  <SelectItem value="dental">Dental y estética</SelectItem>
+                  <SelectItem value="dental">Clínica dental</SelectItem>
+                  <SelectItem value="estetica">Clínica estética</SelectItem>
+                  <SelectItem value="clinicas">Otra clínica privada</SelectItem>
                   <SelectItem value="inmobiliarias">Inmobiliarias</SelectItem>
                   <SelectItem value="despachos">Despachos profesionales</SelectItem>
                   <SelectItem value="tecnicos">Servicios técnicos</SelectItem>
@@ -164,21 +165,21 @@ const DemoFormSection = () => {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="monthlyLeads">Leads mensuales aproximados</Label>
+              <Label htmlFor="monthlyLeads">Solicitudes de cita mensuales</Label>
               <Input
                 id="monthlyLeads"
                 type="number"
                 value={formData.monthlyLeads}
                 onChange={(e) => handleChange('monthlyLeads', e.target.value)}
-                className="text-gray-900 placeholder:text-gray-400"
+                className="text-foreground placeholder:text-muted-foreground"
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="mainChannel">Canal principal actual</Label>
+            <Label htmlFor="mainChannel">Canal donde más se atascan las citas</Label>
             <Select value={formData.mainChannel} onValueChange={(value) => handleChange('mainChannel', value)}>
-              <SelectTrigger id="mainChannel" className="text-gray-900">
+              <SelectTrigger id="mainChannel" className="text-foreground">
                 <SelectValue placeholder="Selecciona un canal" />
               </SelectTrigger>
               <SelectContent>
@@ -186,20 +187,21 @@ const DemoFormSection = () => {
                 <SelectItem value="phone">Teléfono</SelectItem>
                 <SelectItem value="whatsapp">WhatsApp</SelectItem>
                 <SelectItem value="web">Formulario web</SelectItem>
-                <SelectItem value="mixed">Mixto</SelectItem>
+                <SelectItem value="missed_calls">Llamadas perdidas</SelectItem>
+                <SelectItem value="mixed">Varios canales</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="message">Mensaje adicional</Label>
+            <Label htmlFor="message">¿Dónde sospechas que se pierden citas?</Label>
             <Textarea
               id="message"
               rows={4}
               value={formData.message}
               onChange={(e) => handleChange('message', e.target.value)}
-              placeholder="Cuéntanos sobre tu proceso comercial actual..."
-              className="text-gray-900 placeholder:text-gray-400"
+              placeholder="Ejemplo: llamadas fuera de horario, formularios que tardan en responderse, WhatsApps sin seguimiento, no-shows..."
+              className="text-foreground placeholder:text-muted-foreground"
             />
           </div>
 
@@ -210,12 +212,12 @@ const DemoFormSection = () => {
               onCheckedChange={(checked) => handleChange('consent', checked)}
             />
             <Label htmlFor="consent" className="text-sm leading-relaxed cursor-pointer">
-              Acepto la política de privacidad y el tratamiento de mis datos para fines comerciales *
+              Acepto la política de privacidad y el tratamiento de mis datos profesionales para preparar la auditoría *
             </Label>
           </div>
 
           <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? 'Enviando...' : 'Solicitar demo'}
+            {loading ? 'Enviando...' : 'Solicitar auditoría de 15 minutos'}
           </Button>
         </form>
       </CardContent>

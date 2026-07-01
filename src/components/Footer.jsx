@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center gap-2 font-bold text-xl mb-4">
-              <Zap className="w-6 h-6 text-primary" />
+              <img src="/favicon.svg" alt="" className="h-7 w-7" />
               <span>CitaLink</span>
             </div>
             <p className="text-sm text-muted-foreground max-w-xs">

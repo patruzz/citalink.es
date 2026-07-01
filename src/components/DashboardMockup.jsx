@@ -7,10 +7,10 @@ import { TrendingUp, Calendar, Users, Target } from 'lucide-react';
 
 const DashboardMockup = () => {
   const kpis = [
-    { label: 'Nuevos leads', value: '47', change: '+12%', icon: Users, color: 'text-blue-600' },
-    { label: 'Citas confirmadas', value: '23', change: '+8%', icon: Calendar, color: 'text-green-600' },
-    { label: 'Tasa conversión', value: '48.9%', change: '+5.2%', icon: Target, color: 'text-purple-600' },
-    { label: 'Respuesta media', value: '47s', change: '-23s', icon: TrendingUp, color: 'text-orange-600' },
+    { label: 'Nuevos leads', value: '47', change: '+12%', icon: Users, color: 'text-primary' },
+    { label: 'Citas confirmadas', value: '23', change: '+8%', icon: Calendar, color: 'text-primary' },
+    { label: 'Tasa conversión', value: '48.9%', change: '+5.2%', icon: Target, color: 'text-accent' },
+    { label: 'Respuesta media', value: '47s', change: '-23s', icon: TrendingUp, color: 'text-foreground/80' },
   ];
 
   const sampleLeads = [
@@ -26,12 +26,12 @@ const DashboardMockup = () => {
 
   const getStatusColor = (status) => {
     const colors = {
-      qualified: 'bg-green-100 text-green-800',
-      contacted: 'bg-blue-100 text-blue-800',
-      new: 'bg-gray-100 text-gray-800',
-      confirmed: 'bg-green-100 text-green-800',
+      qualified: 'border border-primary/20 bg-primary/10 text-primary',
+      contacted: 'border border-white/10 bg-muted/60 text-muted-foreground',
+      new: 'border border-white/10 bg-background/60 text-muted-foreground',
+      confirmed: 'border border-primary/20 bg-primary/10 text-primary',
     };
-    return colors[status] || 'bg-gray-100 text-gray-800';
+    return colors[status] || 'border border-white/10 bg-muted/60 text-muted-foreground';
   };
 
   return (
@@ -42,7 +42,7 @@ const DashboardMockup = () => {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between mb-2">
                 <kpi.icon className={`w-5 h-5 ${kpi.color}`} />
-                <span className="text-xs font-medium text-green-600">{kpi.change}</span>
+                <span className="text-xs font-medium text-primary">{kpi.change}</span>
               </div>
               <div className="text-2xl font-bold">{kpi.value}</div>
               <div className="text-xs text-muted-foreground mt-1">{kpi.label}</div>

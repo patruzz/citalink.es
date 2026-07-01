@@ -67,7 +67,7 @@ const ProductPage = () => {
               transition={{ duration: 0.6 }}
               className="max-w-3xl mx-auto text-center mb-16"
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-6" style={{ letterSpacing: '-0.02em' }}>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Plataforma completa de gestión comercial
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
@@ -80,10 +80,10 @@ const ProductPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-card rounded-2xl shadow-xl p-8 border mb-16"
+              className="bg-card rounded-lg shadow-xl p-8 border mb-16"
             >
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-1 bg-muted/50 rounded-xl p-4">
+                <div className="lg:col-span-1 bg-muted/50 rounded-lg p-4">
                   <div className="space-y-2">
                     <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-4">
                       Navegación
@@ -124,12 +124,12 @@ const ProductPage = () => {
                           <div key={i} className="px-4 py-3 grid grid-cols-4 gap-4 items-center text-sm">
                             <div className="font-medium">{name}</div>
                             <div>
-                              <span className="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">
+                              <span className="rounded-md border border-primary/20 bg-primary/10 px-2 py-1 text-xs text-primary">
                                 Qualified
                               </span>
                             </div>
                             <div className="font-semibold">{87 - i * 5}</div>
-                            <div className="text-primary text-xs">Ver detalles →</div>
+                            <div className="text-primary text-xs">Ver detalles</div>
                           </div>
                         ))}
                       </div>
