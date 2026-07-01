@@ -171,7 +171,7 @@ const HomePage = () => {
                   </Link>
                 </div>
 
-                <div className="mt-6 grid grid-cols-3 gap-3">
+                <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
                   {['Starter 19 EUR/mes', 'Setup 49 EUR', 'Growth recomendado'].map((item) => (
                     <div key={item} className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-3 text-sm text-muted-foreground">
                       {item}
