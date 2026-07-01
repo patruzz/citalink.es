@@ -54,7 +54,7 @@ const DemoFormSection = () => {
       }, { $autoCancel: false });
 
       setSubmitStatus('success');
-      toast.success('Demo solicitada. Te contactaremos para revisar tu flujo comercial.');
+      toast.success('Auditoría solicitada. Te contactaremos para revisar tu flujo comercial.');
       
       setFormData({
         name: '',
@@ -79,9 +79,9 @@ const DemoFormSection = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Solicitar demo personalizada</CardTitle>
+        <CardTitle>Solicitar auditoría de citas</CardTitle>
         <CardDescription>
-          Completa el formulario y te contactaremos para revisar tu flujo comercial
+          Completa el formulario y te contactaremos para revisar dónde se escapan oportunidades
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -215,7 +215,7 @@ const DemoFormSection = () => {
           </div>
 
           <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? 'Enviando...' : 'Solicitar demo'}
+            {loading ? 'Enviando...' : 'Solicitar auditoría'}
           </Button>
         </form>
       </CardContent>

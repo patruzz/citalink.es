@@ -10,20 +10,20 @@ import DemoFormSection from '@/components/DemoFormSection.jsx';
 
 const DemoPage = () => {
   const demoIncludes = [
-    'Revisión de tu flujo comercial actual',
-    'Configuración de agentes según tu sector',
-    'Demostración en vivo de la plataforma',
-    'Estimación de ROI personalizada',
-    'Plan de implementación paso a paso',
+    'Mapa de canales donde entran tus consultas',
+    'Estimación de citas perdidas por respuesta tardía',
+    'Revisión de agenda, recordatorios y reprogramaciones',
+    'Primer flujo automatizable con menor riesgo',
+    'Plan de activación en fases para tu equipo',
   ];
 
   return (
     <>
       <Helmet>
-        <title>Solicitar demo - CitaLink</title>
+        <title>Auditoría de citas - CitaLink</title>
         <meta
           name="description"
-          content="Solicita una demo personalizada de CitaLink. Revisamos tu flujo comercial y te mostramos cómo automatizar la gestión de leads y citas."
+          content="Solicita una auditoría de citas con CitaLink. Revisamos canales, tiempos de respuesta, agenda y seguimiento para detectar oportunidades perdidas."
         />
       </Helmet>
 
@@ -39,11 +39,12 @@ const DemoPage = () => {
               className="max-w-3xl mx-auto text-center mb-12"
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-6" style={{ letterSpacing: '-0.02em' }}>
-                Solicita tu demo personalizada
+                Solicita una auditoría de citas
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Completa el formulario y te contactaremos para revisar tu flujo comercial y mostrarte 
-                cómo CitaLink puede ayudarte a convertir más leads en citas confirmadas.
+                Completa el formulario y revisaremos contigo dónde se pierden consultas, qué parte del
+                seguimiento conviene automatizar primero y cómo CitaLink puede convertir más intención
+                en citas confirmadas.
               </p>
             </motion.div>
 
@@ -66,7 +67,7 @@ const DemoPage = () => {
                 >
                   <Card className="sticky top-24">
                     <CardContent className="pt-6">
-                      <h3 className="font-semibold text-lg mb-4">Qué incluye la demo</h3>
+                      <h3 className="font-semibold text-lg mb-4">Qué incluye la auditoría</h3>
                       <ul className="space-y-3">
                         {demoIncludes.map((item, index) => (
                           <li key={index} className="flex items-start gap-2">
